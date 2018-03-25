@@ -2,42 +2,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-class Node {
-    HashMap<Character, Node> next = new HashMap<>();
-    int availableTerminals = 0;
-    boolean isTerminal = false;
-}
-
-interface Trie {
-    /**
-     * Expected complexity: O(|element|)
-     * @return <tt>true</tt> if this set did not already contain the specified
-     *         element
-     */
-    boolean add(String element);
-
-    /**
-     * Expected complexity: O(|element|)
-     */
-    boolean contains(String element);
-
-    /**
-     * Expected complexity: O(|element|)
-     * @return <tt>true</tt> if this set contained the specified element
-     */
-    boolean remove(String element);
-
-    /**
-     * Expected complexity: O(1)
-     */
-    int size();
-
-    /**
-     * Expected complexity: O(|prefix|)
-     */
-    int howManyStartsWithPrefix(String prefix);
-}
-
 public class TrieImpl implements Trie {
     @Override
     public boolean add (String element)
@@ -61,7 +25,6 @@ public class TrieImpl implements Trie {
         else {
             return false;
         }
-
     }
     @Override
     public boolean remove (String element)
@@ -119,16 +82,4 @@ public class TrieImpl implements Trie {
         return current.availableTerminals;
     }
 
-    public static void main(String[] args)
-    {
-        TrieImpl tr = new TrieImpl();
-        tr.add("asdf");
-        tr.add("asdq");
-        System.out.println(tr.howManyStartsWithPrefix("asdf"));
-        tr.add("asdf");
-        System.out.println(tr.howManyStartsWithPrefix("asd"));
-        tr.remove("asdf");
-        System.out.println(tr.howManyStartsWithPrefix("asdf"));
-
-    }
 }
